@@ -3,6 +3,6 @@
         <ContentWrapperHeader />
     </div>
 </template>
-<script lang="ts" setup>
-import ContentWrapperHeader from "../wrapper/header/index.vue"
+<script setup lang="ts">
+import ContentWrapperHeader from './header/index.vue'
 </script>

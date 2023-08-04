@@ -5,6 +5,6 @@
     </div>
 </template>
 <script setup lang="ts">
-import ContentSectionTitle from '../section/title/index.vue'
 defineProps<{ title: string }>();
+import ContentSectionTitle from "./title/index.vue"
 </script>

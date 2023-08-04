@@ -1,5 +1,5 @@
 import { ListOrder, MultiPageConfig, RequestBaseConfig, Response } from "~/interface"
-const apiBaseUrl = 'http://cloud-music.pl-fe.cn/'
+const apiBaseUrl = "https://netease-cloud-music-api-rose-pi.vercel.app"
 export const personalized_newsong = (
     url: string,
     params: {

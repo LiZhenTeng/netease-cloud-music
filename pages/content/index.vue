@@ -10,12 +10,10 @@
     </div>
 </template>
 <script lang="ts" setup>
-
-import ContentSection from "./section/index.vue"
 import ContentWrapper from "./wrapper/index.vue"
-import ContentSectionSongList from './section/song-list/index.vue'
-import ContentSectionPlayList from './section/play-list/index.vue'
-
+import ContentSection from "./section/index.vue"
+import ContentSectionSongList from "./section/song-list/index.vue"
+import ContentSectionPlayList from "./section/play-list/index.vue"
 </script>
 <style scoped>
 .content-button {

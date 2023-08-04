@@ -4,7 +4,9 @@ export default defineNuxtConfig({
     '@element-plus/nuxt'
   ],
   nitro: {
-
+    routeRules: {
+      '/**': { isr: false },
+    },
   },
   imports: {
     dirs: ['./stores'],
