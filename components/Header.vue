@@ -9,13 +9,13 @@
             <ul>
                 <li></li>
                 <li @click="back">
-                    <img src="../assets/return.png" alt="" />
+                    <IconArrowLeft />
                 </li>
-                <li @click="forward">
-                    <img src="../assets/return2.png" alt="" />
+                <li @click="forward" style="width: 18px;">
+                    <IconArrowRight />
                 </li>
                 <li @click="refresh">
-                    <img src="../assets/refresh.png" alt="" />
+                    <IconRefresh />
                 </li>
             </ul>
         </div>
@@ -32,21 +32,9 @@
                 </div>
             </NuxtLink>
             <div>
-                <ElDropdown>
-                    <span class="el-dropdown-link">
-                        <img src="../assets/头像.jpg" alt="" class="profile-img" />
-                    </span>
-                    <template #dropdown>
-                        <ElDropdownMenu slot="dropdown">
-                            <ElDropdownItem class="el-dropdown-item">
-                                <NuxtLink to="/login">Sign Up</NuxtLink>
-                            </ElDropdownItem>
-                            <ElDropdownItem class="el-dropdown-item">
-                                <div @click="logout">Logout</div>
-                            </ElDropdownItem>
-                        </ElDropdownMenu>
-                    </template>
-                </ElDropdown>
+                <span>
+                    <img src="../assets/avatar.jpg" alt="" class="profile-img" />
+                </span>
             </div>
         </div>
     </div>
@@ -109,7 +97,7 @@ const logout = () => {
     display: flex;
     flex-direction: row;
     margin: 0;
-    padding: 0;
+    padding: 5px;
 }
 
 .top-wrap ul li {

@@ -5,7 +5,7 @@
                 <div class="side-title">{{ group.title }}</div>
                 <div class="side-menu">
                     <NuxtLink :to="{ path: menu.url }" v-for="menu in group.menus" :key="menu.key">
-                        <component :is="menu.icon">menu.name</component>
+                        <!-- <component :is="menu.icon"></component> -->{{ menu.name }}
                     </NuxtLink>
                 </div>
             </div>
@@ -13,9 +13,10 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { Layout } from '~/types';
 
-const groups = reactive<Layout.Left.MenuGroups>([]);
+const menus = useMenus()
+const { left: groups } = menus;
+
 </script>
 <style scoped>
 a {

@@ -11,7 +11,7 @@ export namespace Layout {
             alias: string
             key: string,
             url: string,
-            icon: Component
+            icon: string
         }
     }
     export namespace MainHeader {
@@ -23,4 +23,45 @@ export namespace Layout {
             new: boolean
         }
     }
+}
+
+export namespace NeteaseCloudMusic {
+    export interface RequestBaseConfig {
+        cookie?: string
+        realIP?: string // IPv4/IPv6 filled in X-Real-IP
+        proxy?: string // HTTP proxy
+    }
+
+    export interface MultiPageConfig {
+        limit?: string | number
+        offset?: string | number
+    }
+
+    export interface ImageUploadConfig {
+        imgFile: {
+            name: string
+            data: string | Buffer
+        }
+        imgSize?: number
+        imgX?: number
+        imgY?: number
+    }
+
+    export interface APIBaseResponse {
+        code: number
+        cookie: string
+        [index: string]: unknown
+    }
+
+    export interface Response<Body = APIBaseResponse> {
+        status: number // The Http Response Code
+        body: Body // API Response body
+        cookie: string[]
+    }
+
+    export const enum SubAction {
+        sub = 1,
+        unsub = 0,
+    }
+      
 }

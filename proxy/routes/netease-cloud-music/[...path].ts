@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig();
     try {
         return await $fetch(event.context.params!.path, {
-            baseURL: config.neteaseCloudMusic.apiUrl,
+            baseURL: config.neteaseCloudMusic.apiBaseUrl,
             params: {
                 ...query,
             },

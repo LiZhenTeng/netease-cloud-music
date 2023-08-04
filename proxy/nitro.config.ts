@@ -6,9 +6,9 @@ export default defineNitroConfig({
     },
     runtimeConfig: {
         neteaseCloudMusic: {
-            //apiUrl: 'https://netease-cloud-music-api-rose-pi.vercel.app'
+            //apiBaseUrl: 'https://netease-cloud-music-api-rose-pi.vercel.app'
             //国内$fetch请求不了海外接口
-            apiUrl: 'http://localhost:5168/netease-cloud-music'
+            apiBaseUrl: 'http://localhost:5168/netease-cloud-music'
         }
     }
 })

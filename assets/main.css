@@ -142,7 +142,7 @@ body.light-mode .video-bg:before {
 }
 .app {
     background-color: var(--theme-bg-color);
-    min-width: 700px;
+    min-width: 1450px;
     max-height: 880px;
     height: 95vh;
     display: flex;
@@ -444,6 +444,7 @@ body.light-mode .video-bg:before {
 
 .main-header .header-menu a {
     padding: 20px 24px;
+    padding-left: 50px;
 }
 
 .main-container {
@@ -485,7 +486,7 @@ body.light-mode .video-bg:before {
     align-items: center;
     width: 100%;
     justify-content: space-between;
-    background-image: url("./bannaer-栗山未来.jpg");
+    background-image: url("./bannaer-lishan-future.jpg");
     border-radius: 14px;
 }
 
@@ -658,7 +659,7 @@ body.light-mode .video-bg:before {
 
 .status {
     margin-left: auto;
-    width: 140px;
+    width: 60px;
     font-size: 14px;
     position: relative;
 }
@@ -770,7 +771,7 @@ body.light-mode .video-bg:before {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: 187px;
+    width: 80px;
     margin-left: auto;
 }
 
