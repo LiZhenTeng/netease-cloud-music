@@ -1,4 +1,14 @@
 export default defineNuxtConfig({
+  app: {
+    head: {
+      title: 'Netease Cloud Music',
+      meta: [
+        { charset: 'utf-8' }
+      ],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/music.ico' }]
+    }
+  },
+  css: ['@/assets/main.css', 'APlayer/dist/APlayer.min.css'],
   modules: [
     '@pinia/nuxt',
     '@element-plus/nuxt'

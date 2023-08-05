@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
+    "aplayer": "^1.10.1",
     "pinia": "^2.1.6"
   }
 }

@@ -15,13 +15,16 @@
                     <IconPlaySong />
                 </div>
                 <div class="click-svg" v-if="item.song.mvid != 0">
-                    <IconPlayMv />
+                    <NuxtLink :to="{ path: 'play-mv', query: { mvId: item.song.mvid } }">
+                        <IconPlayMv />
+                    </NuxtLink>
                 </div>
-                <div class="click-svg">
+                <!-- <div class="click-svg">
+                    {{ item.url }}
                     <a :href="item.url" target="_blank">
                         <IconDownload />
                     </a>
-                </div>
+                </div> -->
             </div>
         </li>
 
@@ -31,7 +34,7 @@
 import { personalized_newsong } from '~/composables/netease-cloud-music';
 
 const { result } = await personalized_newsong('/personalized/newsong', {}) as unknown as { code: number, category: number, result: Array<any> }
-result.forEach(x=>{
-    x.song.duration=formatTime(x.song.duration)
+result.forEach(x => {
+    x.song.duration = formatTime(x.song.duration)
 })
 </script>

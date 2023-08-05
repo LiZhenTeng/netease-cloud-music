@@ -3,14 +3,18 @@
     <Background />
     <div class="app">
       <Header></Header>
-      <!-- <Aplayer></Aplayer> -->
       <div class="wrapper">
         <Left />
-        <NuxtPage />
+        <div class="main-container">
+          <NuxtPage />
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import "./assets/main.css";
+if (process.client) {
+  const { default: aplayer } = await import('APlayer');
+  const ap = new aplayer({});
+}
 </script>
