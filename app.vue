@@ -12,9 +12,3 @@
     </div>
   </div>
 </template>
-<script lang="ts" setup>
-if (process.client) {
-  const { default: aplayer } = await import('APlayer');
-  const ap = new aplayer({});
-}
-</script>
