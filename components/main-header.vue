@@ -14,7 +14,7 @@
 
 const activeKey = ref<string | undefined | null>('');
 const route = useRoute();
-const menus = useMenus();
+const menus = useMenusStore();
 const { mainHeader: groups } = menus
 activeKey.value = route.name?.toString();
 

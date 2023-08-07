@@ -14,7 +14,7 @@
 </template>
 <script lang="ts" setup>
 
-const menus = useMenus()
+const menus = useMenusStore()
 const { left: groups } = menus;
 
 </script>

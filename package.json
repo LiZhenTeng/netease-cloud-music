@@ -12,10 +12,17 @@
   },
   "devDependencies": {
     "@element-plus/nuxt": "^1.0.5",
-    "nuxt": "^3.5.3"
+    "@nuxtjs/i18n": "8.0.0-rc.2",
+    "@types/howler": "^2.2.7",
+    "nuxt": "^3.5.3",
+    "nuxt-lodash": "^2.5.0"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
-    "pinia": "^2.1.6"
+    "howler": "^2.2.3",
+    "lru-cache": "^10.0.0",
+    "pinia": "^2.1.6",
+    "sass": "^1.64.2",
+    "vue-slider-component": "^3.2.24"
   }
 }

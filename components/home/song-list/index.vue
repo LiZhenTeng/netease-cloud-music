@@ -33,7 +33,7 @@
 <script lang="ts" setup>
 import { personalized_newsong } from '~/composables/netease-cloud-music';
 
-const { result } = await personalized_newsong('/personalized/newsong', {}) as unknown as { code: number, category: number, result: Array<any> }
+const { result } = await personalized_newsong({}) as unknown as { code: number, category: number, result: Array<any> }
 result.forEach(x => {
     x.song.duration = formatTime(x.song.duration)
 })

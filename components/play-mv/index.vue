@@ -10,5 +10,5 @@
 import { mv_url } from '~/composables/netease-cloud-music';
 
 const { mvId } = defineProps<{ mvId: number }>();
-const { data: { url } } = await mv_url('mv/url', { id: mvId }) as unknown as { code: number, data: Record<string, any> }
+const { data: { url } } = await mv_url({ id: mvId }) as unknown as { code: number, data: Record<string, any> }
 </script>

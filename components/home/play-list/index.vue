@@ -27,7 +27,7 @@ const handleCurrentChange = async (page: number) => {
     currentPage.value = page;
 }
 watch(currentPage, async () => {
-    const response = await top_playlist('top/playlist', { limit: 24, offset: (currentPage.value - 1) * limit }) as unknown as {
+    const response = await top_playlist({ limit: 24, offset: (currentPage.value - 1) * limit }) as unknown as {
         playlists: Array<any>, total: number, code: number,
         more: true,
         cat: string
