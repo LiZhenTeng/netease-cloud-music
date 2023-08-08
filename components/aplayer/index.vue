@@ -3,12 +3,12 @@
 </template>
   
 <script lang="ts" setup>
-import APlayer from 'APlayer';
+import {APlayer} from 'APlayer';
 import 'aplayer/dist/APlayer.min.css';
 import { storeToRefs } from 'pinia';
 const aPlayer = useAPlayerStore();
 const { audios } = storeToRefs(aPlayer)
-const { fixed, mini, autoplay, theme, listFolded, listMaxHeight, loop, lrcType, order, preload, volume, songId, songType, storageName, mutex } = withDefaults(defineProps<{
+const { fixed, mini, autoplay, theme, listFolded, listMaxHeight, loop, lrcType, order, preload, volume, storageName, mutex } = withDefaults(defineProps<{
     fixed: boolean
     mini: boolean,
     autoplay: boolean,
@@ -17,8 +17,6 @@ const { fixed, mini, autoplay, theme, listFolded, listMaxHeight, loop, lrcType, 
     order: 'list' | 'random',
     preload: 'auto' | 'metadata' | 'none',
     volume: number,
-    songType: string,
-    songId: number,
     mutex: boolean,
     lrcType: number,
     listFolded: boolean,
@@ -33,8 +31,6 @@ const { fixed, mini, autoplay, theme, listFolded, listMaxHeight, loop, lrcType, 
     order: 'random',
     preload: 'auto',
     volume: 0.7,
-    songType: 'playlist',
-    songId: 19723756,
     mutex: true,
     lrcType: 3,
     listFolded: true,
