@@ -4,7 +4,7 @@
   
 <script lang="ts" setup>
 import APlayer from 'APlayer';
-import '~/assets/APlayer.min.css';
+import 'aplayer/dist/APlayer.min.css';
 import { storeToRefs } from 'pinia';
 const aPlayer = useAPlayerStore();
 const { audios } = storeToRefs(aPlayer)

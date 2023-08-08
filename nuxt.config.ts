@@ -31,11 +31,7 @@ export default defineNuxtConfig({
     autoImports: ['defineStore', 'acceptHMRUpdate'],
   },
   vite: {
-    build: {
-      rollupOptions: {
-        external: ['APlayer']
-      }
-    }
+    
   },
   appConfig: {
     limit: 24
