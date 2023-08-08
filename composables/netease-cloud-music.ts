@@ -1,6 +1,6 @@
 import type { ListOrder, MultiPageConfig, RequestBaseConfig, Response, SongDetail } from "~/interface"
 const isDev = process.env.NODE_ENV === 'development'
-const apiBaseUrl = isDev ? 'http://cloud-music.pl-fe.cn/':'https://netease-cloud-music-api-rose-pi.vercel.app'
+const apiBaseUrl = isDev ? 'http://cloud-music.pl-fe.cn/' : 'https://netease-cloud-music-api-rose-pi.vercel.app'
 
 export const personalized_newsong = (
     params: {
@@ -90,4 +90,9 @@ export const fm_trash = (
     params: { id: string | number; time?: string | number } & RequestBaseConfig,
 ): Promise<Response> => {
     return $fetch('/fm_trash', { baseURL: `${apiBaseUrl}`, params })
+}
+export const lyric = (
+    params: { id: string | number } & RequestBaseConfig,
+): Promise<Response> => {
+    return $fetch('/lyric', { baseURL: `${apiBaseUrl}`, params })
 }

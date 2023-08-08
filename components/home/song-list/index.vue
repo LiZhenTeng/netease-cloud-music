@@ -11,7 +11,7 @@
             <span class="status">{{ item.song.duration }}</span>
             <!-- <span class="status">{{ item.song.alias[0] }}</span> -->
             <div class="button-wrapper">
-                <div class="click-svg">
+                <div class="click-svg" @click="play(item.id)">
                     <IconPlaySong />
                 </div>
                 <div class="click-svg" v-if="item.song.mvid != 0">
@@ -31,10 +31,32 @@
     </ul>
 </template>
 <script lang="ts" setup>
-import { personalized_newsong } from '~/composables/netease-cloud-music';
+import { storeToRefs } from 'pinia';
+const aPlayer = useAPlayerStore();
+const { audios } = storeToRefs(aPlayer);
 
 const { result } = await personalized_newsong({}) as unknown as { code: number, category: number, result: Array<any> }
 result.forEach(x => {
     x.song.duration = formatTime(x.song.duration)
 })
+const play = async (id: number) => {
+    const audio = result.find(x => x.id == id);
+    const { data } = await song_url({ id: id }) as unknown as any
+    const { lrc } = await lyric({ id }) as unknown as any
+    console.log(lrc);
+    /* audios.value.push({
+        name: audio.name,
+        cover: audio.picUrl,
+        url: data[0].url,
+        artist: audio.song.artists.map((x: any) => x.name).join('&'),
+        lrc: lrc.lyric
+    }) */
+    audios.value.push({
+        name: audio.name,
+        cover: audio.picUrl,
+        url: '',
+        artist: '',
+        lrc: ''
+    })
+}
 </script>
