@@ -137,13 +137,12 @@ body.light-mode .video-bg:before {
     backdrop-filter: saturate(3);
 }
 #app{
-    max-width: 1500px;
+    max-width: 100%;
     width: 100%;
 }
 .app {
     background-color: var(--theme-bg-color);
-    min-width: 1450px;
-    max-height: 880px;
+    margin-right: 15px;
     height: 95vh;
     display: flex;
     flex-direction: column;
