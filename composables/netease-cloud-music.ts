@@ -96,3 +96,13 @@ export const lyric = (
 ): Promise<Response> => {
     return $fetch('/lyric', { baseURL: `${apiBaseUrl}`, params })
 }
+
+export const playlist_track_all = (
+    params: {
+        id: number | string
+        s?: number | string
+    } & MultiPageConfig &
+        RequestBaseConfig,
+): Promise<Response> => {
+    return $fetch('/playlist/track/all', { baseURL: `${apiBaseUrl}`, params })
+}

@@ -1,20 +1,18 @@
 <template>
-    <div class="apps-card">
-        <ElRow>
-            <ElCol :span="4" v-for="item in playlists" :key="item.id">
-                <ElImage class="song-list-img app-card" :src="item.coverImgUrl"></ElImage>
-                <h5 class="song-list-text" :title="item.name.length > 20 ? item.name : ''">{{
-                    item.name.length > 20 ? item.name.substr(0, 18) + '...' : item.name }}</h5>
-            </ElCol>
-        </ElRow>
-        <ElRow>
-            <ElCol :span="8" :offset="12">
-                <ElPagination v-if="total != 0" @current-change="handleCurrentChange" :current-page.sync="currentPage"
-                    :page-size="limit" layout="prev, pager, next, jumper" :total="total" :background="true">
-                </ElPagination>
-            </ElCol>
-        </ElRow>
-    </div>
+    <ElRow>
+        <ElCol :span="4" v-for="item in playlists" :key="item.id">
+            <NuxtLink :to="{ path: '/playlist-detail', query: { playlistId: item.id } }">
+                <PlaylistItem :coverImgUrl="item.coverImgUrl" :name="item.name" />
+            </NuxtLink>
+        </ElCol>
+    </ElRow>
+    <ElRow>
+        <ElCol :span="8" :offset="8">
+            <ElPagination v-if="total != 0" @current-change="handleCurrentChange" :current-page.sync="currentPage"
+                :page-size="limit" layout="prev, pager, next, jumper" :total="total" :background="true">
+            </ElPagination>
+        </ElCol>
+    </ElRow>
 </template>
 <script lang="ts" setup>
 import { top_playlist } from '~/composables/netease-cloud-music';
@@ -38,18 +36,3 @@ watch(currentPage, async () => {
 }, { immediate: true })
 
 </script>
-<style scoped>
-.song-list-img {
-    width: 180px;
-    height: 180px;
-    border-radius: 10px;
-    margin: 0 10px;
-    cursor: pointer;
-}
-
-.song-list-text {
-    padding-left: 10px;
-    font-weight: 400;
-    cursor: pointer;
-}
-</style>

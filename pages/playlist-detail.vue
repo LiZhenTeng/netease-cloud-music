@@ -1,0 +1,3 @@
+<template>
+    <Playlist></Playlist>
+</template>
