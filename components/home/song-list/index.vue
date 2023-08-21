@@ -43,20 +43,14 @@ const play = async (id: number) => {
     const audio = result.find(x => x.id == id);
     const { data } = await song_url({ id: id }) as unknown as any
     const { lrc } = await lyric({ id }) as unknown as any
+    console.log(lrc)
     console.log(lrc);
-    /* audios.value.push({
-        name: audio.name,
-        cover: audio.picUrl,
-        url: data[0].url,
-        artist: audio.song.artists.map((x: any) => x.name).join('&'),
-        lrc: lrc.lyric
-    }) */
     audios.value.push({
         name: audio.name,
         cover: audio.picUrl,
-        url: '',
-        artist: '',
-        lrc: ''
+        url: `https://music.163.com/song/media/outer/url?id=${id}.mp3`,
+        artist: audio.song.artists.map((x: any) => x.name).join('&'),
+        lrc: lrc.lyric
     })
 }
 </script>
