@@ -37,6 +37,27 @@ export namespace APlayer {
     }
 }
 export namespace NeteaseCloudMusic {
+
+    export interface MultiPageConfig {
+        limit?: string | number
+        offset?: string | number
+    }
+    export const enum ListOrder {
+        hot = 'hot',
+        new = 'new',
+    }
+    export const enum SearchType {
+        single = 1,
+        album = 10,
+        artist = 100,
+        playlist = 1000,
+        user = 1002,
+        mv = 1004,
+        lyric = 1006,
+        dj = 1009,
+        video = 1014,
+        complex = 1018,
+    }
     export interface RequestBaseConfig {
         cookie?: string
         realIP?: string // IPv4/IPv6 filled in X-Real-IP
@@ -75,7 +96,7 @@ export namespace NeteaseCloudMusic {
         unsub = 0,
     }
 
-    type SongDetail = {
+    export type SongDetail = {
         name: string
         id: number
         pst: number

@@ -53,8 +53,8 @@ const back = () => {
 }
 const search = () => {
     router.push({
-        path: "/search-song",
-        query: { keyworks: searchValue.value },
+        path: "/search",
+        query: { keywords: searchValue.value },
     })
 }
 

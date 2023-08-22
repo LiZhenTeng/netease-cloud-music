@@ -1,7 +1,7 @@
 <template>
     <ElRow>
         <ElCol>
-            <ElImage class="song-list-img app-card" :src="coverImgUrl"></ElImage>
+            <ElImage class="song-list-img app-card" :src="picUrl"></ElImage>
         </ElCol>
     </ElRow>
     <ElRow>
@@ -14,7 +14,7 @@
 </template>
 <script lang="ts" setup>
 defineProps<{
-    coverImgUrl: string,
+    picUrl: string,
     name: string
 }>();
 </script>

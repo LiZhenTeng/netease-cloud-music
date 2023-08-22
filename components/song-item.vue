@@ -20,7 +20,8 @@
                     <IconPlaySong @click="play(id)" />
                     <!-- <IconPause /> -->
                 </div>
-                <NuxtLink :to="{ path: 'play-mv', query: { mvId: mv } }" class="click-svg" v-if="mv != 0">
+                <NuxtLink :to="{ path: 'play-mv', query: { mvId: mv } }" class="click-svg"
+                    v-if="mv != 0 && mv != undefined">
                     <IconPlayMv />
                 </NuxtLink>
             </div>
@@ -32,7 +33,7 @@ import { storeToRefs } from 'pinia';
 
 const { audio, artist, name } = defineProps<{
     id: number,
-    mv: number,
+    mv?: number,
     name: string,
     artist: string,
     dt: string,
@@ -49,7 +50,7 @@ const play = async (id: number) => {
     audios.value.push({
         id: id,
         name: name,
-        cover: audio.picUrl,
+        cover: audio.picUrl || audio.al.picUrl,
         url: `https://music.163.com/song/media/outer/url?id=${id}.mp3`,
         artist: artist,
         lrc: lrc.lyric

@@ -27,7 +27,7 @@ withDefaults(defineProps<{
     avatarUrl: string,
     nickname: string,
     content: string,
-    likedCount: number,
+    likedCount?: number,
     timeStr: string,
     hot?: boolean
 }>(), {
