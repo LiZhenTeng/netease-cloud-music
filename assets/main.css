@@ -812,7 +812,7 @@ img {
     line-height: 1.6em;
     margin-top: 20px;
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 20px;
+    padding-bottom: 25px;
 }
 
 .app-card-buttons {

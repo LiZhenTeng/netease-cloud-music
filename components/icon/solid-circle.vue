@@ -6,10 +6,10 @@
 </template>
 <script lang="ts" setup>
 withDefaults(defineProps<{
-    width: string,
-    height: string
+    width?: number,
+    height?: number
 }>(), {
-    width: '32',
-    height: '32'
+    width: 32,
+    height: 32
 })
 </script>

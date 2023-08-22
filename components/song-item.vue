@@ -5,7 +5,7 @@
         </ElCol>
         <ElCol :span="5">
             <ElText :truncated="true" class="text">
-                <IconSolidCircle :width="'8'" :height="'8'" style="padding-left: 20px;" />{{ artist }}
+                <IconSolidCircle :width="8" :height="8" style="padding-left: 20px;" />{{ artist }}
             </ElText>
         </ElCol>
         <ElCol :span="3">

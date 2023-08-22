@@ -8,14 +8,16 @@
                 <div class="song-detail">
                     <div class="app-song-detail song-list-wrap">
                         <div class="cover-img-size">
-                            <img :src="playlist.coverImgUrl" alt=" " class="mv-img" />
+                            <img :src="playlist.coverImgUrl" alt=" " class="img" />
                         </div>
                         <div class="song-info">
                             <h3 class="song-list-title" v-if="playlist.name != 0">
                                 {{ playlist.name }}
                             </h3>
                             <div class="author">
-                                <img :src="playlist.creator.avatarUrl" width="50" style="border-radius: 50%" />
+                                <ElAvatar :size="50">
+                                    <ElImage :src="playlist.creator.avatarUrl" />
+                                </ElAvatar>
                                 <span>{{ playlist.creator.nickname }}</span>
                             </div>
                             <button class="content-button status-button button-set">
@@ -60,10 +62,34 @@
                 </ElRow>
                 <ElRow>
                     <ElCol :span="8" :offset="8">
-                        <el-pagination v-if="total != 0" @current-change="handleCurrentChange"
+                        <ElPagination v-if="total != 0" @current-change="handleCurrentChange" class="el-pagination"
                             :current-page.sync="currentPage" :page-size="limit" layout="prev, pager, next, jumper"
                             :total="total" :background="true">
-                        </el-pagination>
+                        </ElPagination>
+                    </ElCol>
+                </ElRow>
+            </ElCol>
+        </ElRow>
+        <ElRow>
+            <ElCol>
+                <h4 class="content-section-title">歌单评论({{ commentTotal }})</h4>
+            </ElCol>
+        </ElRow>
+        <ElRow>
+            <ElCol>
+                <ElRow :gutter="20">
+                    <ElCol v-for="item in comments" :key="item.id" :span="7" class="app-card comment">
+                        <CommentItem :avatar-url="item.user.avatarUrl" :nickname="item.user.nickname"
+                            :content="item.content" :liked-count="item.likedCount" :time-str="item.timeStr"
+                            :hot="item.isHot" />
+                    </ElCol>
+                </ElRow>
+                <ElRow>
+                    <ElCol :span="8" :offset="8">
+                        <ElPagination v-if="commentTotal != 0" @current-change="handleCurrentChangeComment"
+                            class="el-pagination" :current-page.sync="currentPageComment" :page-size="limit"
+                            layout="prev, pager, next, jumper" :total="commentTotal" :background="true">
+                        </ElPagination>
                     </ElCol>
                 </ElRow>
             </ElCol>
@@ -75,14 +101,20 @@ const { limit } = useAppConfig();
 const route = useRoute();
 
 const currentPage = ref(1);
+const currentPageComment = ref(1);
 const songs = reactive<Array<any>>([]);
 const total = ref(0);
+const commentTotal = ref(0);
+const comments = reactive<Array<any>>([]);
 
 const { playlist } = await playlist_detail({ id: route.query.playlistId?.toString() as string }) as unknown as any;
 total.value = playlist.trackIds.length;
 
 const handleCurrentChange = async (page: number) => {
     currentPage.value = page;
+}
+const handleCurrentChangeComment = async (page: number) => {
+    currentPageComment.value = page;
 }
 
 watch(currentPage, async () => {
@@ -99,9 +131,35 @@ watch(currentPage, async () => {
 }, {
     immediate: true
 })
-
+watch(currentPageComment, async () => {
+    const { comments: c, hotComments, total } = await comment_playlist({
+        id: route.query.playlistId?.toString() as string,
+        limit,
+        offset: (currentPageComment.value - 1) * limit,
+    }) as unknown as any;
+    hotComments?.forEach((x: any) => {
+        const cIndex = c.findIndex((e: any) => e.commentId == x.commentId);
+        if (cIndex > 0) {
+            c.unshift(c.splice(cIndex, 1)[0])
+            c[0].isHot = true
+        }
+    })
+    comments.length = 0;
+    comments.push(...c);
+    commentTotal.value = total;
+}, {
+    immediate: true
+})
 </script>
 <style scoped>
+.el-pagination {
+    margin-top: 5px;
+}
+
+.comment {
+    margin-left: 30px;
+}
+
 .song-detail {
     margin-top: 1px;
 }
@@ -183,7 +241,7 @@ watch(currentPage, async () => {
     font-size: 14px;
 }
 
-.mv-img {
+.img {
     border-radius: 50%;
 }
 

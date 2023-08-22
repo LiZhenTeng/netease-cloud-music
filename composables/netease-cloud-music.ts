@@ -106,3 +106,14 @@ export const playlist_track_all = (
 ): Promise<Response> => {
     return $fetch('/playlist/track/all', { baseURL: `${apiBaseUrl}`, params })
 }
+
+export const comment_playlist=(
+    params: {
+      id: string | number
+  
+      before?: string | number
+    } & MultiPageConfig &
+      RequestBaseConfig,
+  ): Promise<Response>=>{
+    return $fetch('/comment/playlist', { baseURL: `${apiBaseUrl}`, params })
+  }
