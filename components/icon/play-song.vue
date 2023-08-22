@@ -1,6 +1,6 @@
 <template>
     <svg t="1639295337775" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2313"
-        width="40" height="40">
+        :width="width" :height="height">
         <path
             d="M512 0C230.4 0 0 230.4 0 512s230.4 512 512 512 512-230.4 512-512S793.6 0 512 0z m0 981.333333C253.866667 981.333333 42.666667 770.133333 42.666667 512S253.866667 42.666667 512 42.666667s469.333333 211.2 469.333333 469.333333-211.2 469.333333-469.333333 469.333333z"
             p-id="2314" fill="#e6e6e6"></path>
@@ -9,3 +9,12 @@
             p-id="2315" fill="#e6e6e6"></path>
     </svg>
 </template>
+<script lang="ts" setup>
+withDefaults(defineProps<{
+    width?: number,
+    height?: number
+}>(), {
+    width: 40,
+    height: 40
+})
+</script>

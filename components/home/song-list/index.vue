@@ -3,7 +3,7 @@
         <li v-for="item in result" :key="item.id">
             <SongItem :id="item.id" :name="item.song.album.name"
                 :artist="item.song.artists.map((x: any) => x.name).join('&')" :dt="item.song.duration" :audio="item"
-                :mv="item.song.mvid" :al="item.song.alias[0]" />
+                :mv="item.song.mvid" :al="item.song.alias.map((x:any)=>x).join('&')" />
         </li>
     </ul>
 </template>
@@ -12,7 +12,6 @@ const { result } = await personalized_newsong({}) as unknown as { code: number, 
 result.forEach(x => {
     x.song.duration = formatTime(x.song.duration)
 })
-
 </script>
 <style scoped>
 .song_items {

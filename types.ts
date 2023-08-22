@@ -25,14 +25,15 @@ export namespace Layout {
     }
 }
 export namespace APlayer {
-    export type Audios = Array<Audio> 
-    type Audio = {
-        name:string,
-        artist:string,
-        url:string,
-        cover:string,
-        lrc:string,
-        theme?:string
+    export type Audios = Array<Audio>
+    export type Audio = {
+        id: number,
+        name: string,
+        artist: string,
+        url: string,
+        cover: string,
+        lrc: string,
+        theme?: string
     }
 }
 export namespace NeteaseCloudMusic {

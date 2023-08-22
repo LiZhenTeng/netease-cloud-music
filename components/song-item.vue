@@ -16,8 +16,9 @@
         </ElCol>
         <ElCol :span="3">
             <div class="button-wrapper">
-                <div class="click-svg" @click="play(id)">
-                    <IconPlaySong />
+                <div class="click-svg">
+                    <IconPlaySong @click="play(id)" />
+                    <!-- <IconPause /> -->
                 </div>
                 <NuxtLink :to="{ path: 'play-mv', query: { mvId: mv } }" class="click-svg" v-if="mv != 0">
                     <IconPlayMv />
@@ -40,19 +41,29 @@ const { audio, artist, name } = defineProps<{
 }>()
 
 const aPlayer = useAPlayerStore();
-const { audios } = storeToRefs(aPlayer);
+const { audios, playingAudio, paused } = storeToRefs(aPlayer);
 
 const play = async (id: number) => {
     const { data } = await song_url({ id: id }) as unknown as any
     const { lrc } = await lyric({ id }) as unknown as any
     audios.value.push({
+        id: id,
         name: name,
         cover: audio.picUrl,
         url: `https://music.163.com/song/media/outer/url?id=${id}.mp3`,
         artist: artist,
         lrc: lrc.lyric
     })
+    playingAudio.value = {
+        id: id,
+        name: name,
+        cover: audio.picUrl,
+        url: `https://music.163.com/song/media/outer/url?id=${id}.mp3`,
+        artist: artist,
+        lrc: lrc.lyric
+    }
 }
+
 </script>
 <style scoped>
 .text {
